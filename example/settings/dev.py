@@ -23,6 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.admin',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
     'polymorphic',
     'example',
     'debug_toolbar',
@@ -61,7 +63,12 @@ SECRET_KEY = 'abc123'
 PASSWORD_HASHERS = ('django.contrib.auth.hashers.UnsaltedMD5PasswordHasher', )
 
 MIDDLEWARE = (
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 INTERNAL_IPS = ('127.0.0.1', )

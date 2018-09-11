@@ -499,3 +499,19 @@ class TestEntryViewSet(APITestCase):
         }
         got = resp.json()
         self.assertEqual(got, expected)
+
+
+def test_login(db, client, admin_user):
+    url = reverse('rest_login')
+
+    data = {
+        'data': {
+            'attributes': {
+                'password': 'password',
+                'username': 'admin',
+            },
+            'type': 'loginViews'
+        },
+    }
+    response = client.post(url, data=data)
+    assert response.status_code == 200

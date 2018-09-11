@@ -15,7 +15,7 @@ from example.views import (
     FiltersetEntryViewSet,
     NoFiltersetEntryViewSet,
     NonPaginatedEntryViewSet,
-    ProjectViewset
+    ProjectViewset,
 )
 
 router = routers.DefaultRouter(trailing_slash=False)
@@ -36,6 +36,7 @@ router.register(r'identities', Identity)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^rest-auth/', include('rest_auth.urls')),
 
     # old tests
     url(r'identities/default/(?P<pk>\d+)',

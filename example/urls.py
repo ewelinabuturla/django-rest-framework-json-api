@@ -13,7 +13,7 @@ from example.views import (
     EntryRelationshipView,
     EntryViewSet,
     NonPaginatedEntryViewSet,
-    ProjectViewset
+    ProjectViewset,
 )
 
 router = routers.DefaultRouter(trailing_slash=False)
@@ -28,6 +28,7 @@ router.register(r'projects', ProjectViewset)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^entries/(?P<entry_pk>[^/.]+)/suggested/',
         EntryViewSet.as_view({'get': 'list'}),
         name='entry-suggested'
